@@ -1,0 +1,10 @@
+# Service on port 80
+# App Backend on port 5000
+
+server {
+    listen  80;
+    server_name localhost;
+    location / {
+        proxy_pass http://app:5000;
+    }
+}

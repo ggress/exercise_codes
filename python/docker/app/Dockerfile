@@ -1,5 +1,5 @@
 # Set base image (host OS)
-FROM python:3.8
+FROM python:3.8-alpine
 
 # Set then working directory in the container
 WORKDIR /code
@@ -13,5 +13,6 @@ RUN pip install -r requirements.txt
 # Copy the content of the local src directory to the working directory
 COPY src/ .
 
+ENV FLASK_APP server.py
 #Command to run on container start
-CMD [ "python", "./server.py"]
+CMD flask run --host=0.0.0.0

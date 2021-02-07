@@ -31,7 +31,7 @@ class DBManager:
 server = Flask(__name__)
 conn = None
 
-@server.route("/")
+@server.route("/blog")
 def listBlog():
     global conn
     if not conn:
@@ -44,7 +44,7 @@ def listBlog():
         response = response + '<div> Hello ' +  c + '</div>'
     return response
 
-@server.route("/hello")
+@server.route("/")
 def hello():
     return "Hello World!!"
 

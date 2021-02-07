@@ -11,4 +11,6 @@ Crea un directorio llamado venv, en el se guarda todo el ambiente despues para a
 
 En Windows con PowerShell ejecutamos:
 
+```bash
 .\venv\Scripts\Activate.ps1
+```

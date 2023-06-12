@@ -1,46 +1,20 @@
-#include<conio.h>
+//#include<conio.h>
 #include<iostream>
 #include<stdio.h>
 
 using namespace std;
 
+float calcularIndiceMasa(float estatura, float peso);
+void menuDinamico(int edad);
+void menuPrincipal();
+
 float calcularIndiceMasa(float estatura, float peso){
     float estaturaCuadrada = estatura * estatura;
     float indice = peso/estaturaCuadrada;
-    return indice
+    return indice;
 }
 
-void menuPrincipal(){
-    int opcion;
-    do
-	{
-        printf("----------------MENU PRINCIPAL------------------\n");
-		printf("1 --> Calcular Indice de masa Corporal\n");
-		printf("2 --> Consultar menu dinamico\n");
-		printf("Elige una opcion del menu:");
-		scanf("%d", &opcion);
-	} while(opcion < 0 || dia > 2);
-	switch(opcion){
-        case 1:
-            float estatura, peso, indice;
-            printf("Dame tu estatura en metros: ");
-            scanf("%f",&estatura);
-            printf("Dame tu peso en kilos: ");
-            scanf("%f",&peso);
-            indice = calcularIndiceMasa(estatura, peso);
-            printf("Tu indice es: %f", indice);
-            break;
-        case 2:
-            int edad;
-        	printf("Dime tu edad : "),
-	        cin>>edad;
-            menuDinamico(edad);
-            break; 
-    }
-}
-
-void menuDinamico(int edad)
-{
+void menuDinamico(int edad){
 	int menu[7][3];
 	int dia;
 	int platillo;
@@ -110,13 +84,41 @@ void menuDinamico(int edad)
 
 }
 
+void menuPrincipal(){
+    int opcion;
+    do{
+        	printf("----------------MENU PRINCIPAL------------------\n");
+		printf("1 --> Calcular Indice de masa Corporal\n");
+		printf("2 --> Consultar menu dinamico\n");
+		printf("Elige una opcion del menu:");
+		scanf("%d", &opcion);
+    }while(opcion < 0 || opcion > 2);
+    switch(opcion){
+        case 1:
+            float estatura, peso, indice;
+            printf("Dame tu estatura en metros: ");
+            scanf("%f",&estatura);
+            printf("Dame tu peso en kilos: ");
+            scanf("%f",&peso);
+            indice = calcularIndiceMasa(estatura, peso);
+            printf("Tu indice es: %f", indice);
+            break;
+        case 2:
+	    int edad;
+	    printf("Dime tu edad : ");
+	    cin>>edad;
+	    menuDinamico(edad);
+            break; 
+    }
+}
+
 int main(int argc, char *argv[]){
     char respuesta = 's';
     while(respuesta == 's'){
         menuPrincipal();
         printf("¿Quieres regresar al menu Principal? (s/n):");
         getchar();
-		respuesta = getchar();
+	respuesta = getchar();
         getchar();
     }
     return 0;

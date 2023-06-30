@@ -14,3 +14,23 @@ En Windows con PowerShell ejecutamos:
 ```bash
 .\venv\Scripts\Activate.ps1
 ```
+
+```bash
+docker compose up -d
+```
+
+```bash
+docker compose ps
+```
+
+```bash
+curl localhost:80
+```
+
+```bash
+curl localhost:80\blog
+```
+
+```bash
+docker compose down
+```

@@ -1,7 +1,7 @@
 # Set base image (host OS)
-FROM python:3.8-alpine
+FROM python:3.12-alpine
 
-# Set then working directory in the container
+# Set then working directory in the containerß
 WORKDIR /code
 
 #Copy the depedencies file to the working directory

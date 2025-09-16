@@ -1,19 +1,20 @@
-version: "3.7"
 services: 
   db:
-    image: mysql:8.0.19
-    command: '--default-authentication-plugin=mysql_native_password'
-    restart: always
+    image: mariadb:11.4
+    restart: unless-stopped
     secrets:
       - db-password
+      - db-user-password
     volumes:
       - db-data:/var/lib/mysql
     networks:
       - backend-network
     environment: 
-      - MYSQL_DATABASE=example
-      - MYSQL_ROOT_PASSWORD_FILE=/run/secrets/db-password
-  
+      MARIADB_DATABASE: example
+      TZ: America/Mexico_City
+      MARIADB_AUTO_UPGRADE: "1"
+      MARIADB_ROOT_PASSWORD_FILE: /run/secrets/db-password
+      MARIADB_PASSWORD_FILE: /run/secrets/db-user-password
   app:
     build: app
     restart: always
@@ -35,6 +36,8 @@ volumes:
   db-data:
 secrets:
   db-password:
+    file: db/secrets.txt
+  db-user-password:
     file: db/secrets.txt
 networks:
   backend-network:
